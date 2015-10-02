@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>OBS het Klavertje - ELO</title>
+    <style type="text/css">
+        .hideContent .contentToHide {
+            display:none;
+        }
+
+        .hideContent:hover .contentToHide {
+            display:block;
+        }
+    </style>
+</head>
+<body>
+<img src="/static/klavertje.png" />
+<h1 th:inline="text">Welkom [[${#httpServletRequest.remoteUser}]]!</h1>
+<p>Je polymorfe pseudoniem is: <code th:text="${pp}"></code></p>
+
+<h2>Je hebt producten bij Zalmberg</h2>
+<p>Encrypted Pseudonym voor Zalmberg: <code th:text="${ep}"></code></p>
+<form th:action="${destination}" method="post">
+    <input type="hidden" name="SAMLResponse" th:value="${samlEncoded}" />
+    <input type="submit" value="Ga naar uitgeverij Zalmberg" />
+</form>
+<div class="hideContent">
+    <h3>Toon XML</h3>
+    <pre class="contentToHide"><code th:text="${saml}">Testcode</code></pre>
+</div>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
+
+</body>
+</html>

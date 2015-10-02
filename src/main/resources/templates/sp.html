@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Uitgeverij Zalmberg</title>
+    <style type="text/css">
+        .hideContent .contentToHide {
+        display:none;
+        }
+
+        .hideContent:hover .contentToHide {
+        display:block;
+        }
+    </style>
+</head>
+<body>
+<img src="/static/zalmberg.png" />
+<h1 th:inline="text">Welkom bij Uitgeverij Zalmberg</h1>
+<p>Encrypted Pseudonym: <br />
+    <code th:text="${ep}"></code></p>
+<p>Je bent bij ons bekend onder het volgende pseudonym: <br />
+    <code th:text="${pseudonym}"></code>
+</p>
+<div class="hideContent">
+    <h2>Toon XML</h2>
+    <pre class="contentToHide"><code th:text="${samlResponse}">Testcode</code></pre>
+</div>
+
+</body>
+</html>
